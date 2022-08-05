@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   SearchIcon,
@@ -8,8 +8,27 @@ import {
 } from "@heroicons/react/solid";
 
 const Navbar = () => {
+  const [color, setColor] = useState("rgba(0, 0, 0, 0.3)");
+  const [textColor, setTextColor] = useState("white");
+
+  useEffect(() => {
+    const changeColor = () => {
+      if (window.scrollY >= 5) {
+        setColor("white");
+        setTextColor("#000000");
+      } else {
+        setColor("rgba(0, 0, 0, 0.3)");
+        setTextColor("white");
+      }
+    };
+    window.addEventListener("scroll", changeColor);
+  }, []);
+
   return (
-    <header className=" sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md p-5 md: px-10">
+    <header
+      style={{ backgroundColor: `${color}` }}
+      className=" fixed w-[100vw] top-0 z-20 grid grid-cols-3 ease-in duration-75 bg-black/30 shadow-md p-5 md: px-10"
+    >
       {/* left */}
       <div className=" relative flex items-center h-10 cursor-pointer my-auto">
         {/* <Image
@@ -22,9 +41,10 @@ const Navbar = () => {
       </div>
 
       {/* middle */}
-      <div className=" flex items-cente md:border-2 rounded-full py-2 md: shadow-sm mr-5">
+      <div className="  flex items-cente md:border-2 rounded-full py-2 md: shadow-sm mr-5">
         <input
-          className=" pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400"
+          style={{ color: `${textColor}` }}
+          className=" pl-5 bg-transparent outline-none flex-grow text-sm text-white placeholder-white"
           type="text"
           placeholder="Start your search"
         />
@@ -32,13 +52,25 @@ const Navbar = () => {
       </div>
       {/* right */}
       <div className=" flex items-center space-x-4 justify-end text-gray-400">
-        <p className=" cursor-pointer hidden md:inline text-sm">
+        <p
+          style={{ color: `${textColor}` }}
+          className=" cursor-pointer hidden md:inline text-sm"
+        >
           Become a host
         </p>
-        <GlobeAltIcon className=" h-6 cursor-pointer" />
+        <GlobeAltIcon
+          style={{ color: `${textColor}` }}
+          className=" h-6 cursor-pointer"
+        />
         <div className=" flex items-center border-2 rounded-full p-2 md:shadow-sm space-x-2">
-          <MenuIcon className=" h-6 cursor-pointer" />
-          <UserCircleIcon className=" h-6 cursor-pointer" />
+          <MenuIcon
+            style={{ color: `${textColor}` }}
+            className=" h-6 cursor-pointer"
+          />
+          <UserCircleIcon
+            style={{ color: `${textColor}` }}
+            className=" h-6 cursor-pointer"
+          />
         </div>
       </div>
     </header>

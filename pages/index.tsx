@@ -4,11 +4,38 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import SmallCard from "../components/SmallCard";
+import { SmallCardData } from "../components/SmallCardData";
+import NewSmallCard from "../components/NewSmallCard";
 import MediumCard from "../components/MediumCard";
 import LargeCard from "../components/LargeCard";
 import Footer from "../components/Footer";
+import { useRef, useEffect, useState, lazy, Suspense } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 export default function Home({ exploreData, cardsData }) {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+  const animation = useAnimation();
+
+  useEffect(() => {
+    console.log("useEffect hook inView =", inView);
+    if (inView) {
+      animation.start({
+        x: 0,
+        transition: {
+          type: "spring",
+          duration: 0.8,
+          bounce: 0.3,
+        },
+      });
+    }
+    if (!inView) {
+      animation.start({ x: "-100vw" });
+    }
+  }, [inView]);
+
   return (
     <div>
       <Head>
@@ -18,11 +45,16 @@ export default function Home({ exploreData, cardsData }) {
 
       <Navbar />
       <Hero />
-      <main className=" max-w-7xl mx-auto px-8 sm:px-16">
-        <section className="pt-6">
-          <h2 className=" text-4xl font-semibold pb-5">Explore Nearby</h2>
 
-          <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <main className=" max-w-7xl mx-auto px-8 sm:px-16 z-10">
+        <section className="pt-6">
+          <h2 className=" text-4xl font-semibold pb-5">Explore Countries</h2>
+
+          <div>
+            <NewSmallCard slides={SmallCardData} />
+          </div>
+
+          {/* <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {exploreData?.map((item) => (
               <SmallCard
                 key={item.img}
@@ -31,16 +63,19 @@ export default function Home({ exploreData, cardsData }) {
                 distance={item.distance}
               />
             ))}
-          </div>
+          </div> */}
         </section>
 
-        <section>
-          <h2 className=" text-4xl font-semibold py-8">Live Anywhere</h2>
-          <div className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth">
+        <section ref={ref}>
+          <h2 className=" text-4xl font-semibold py-8">Explore Countries</h2>
+          <motion.div
+            animate={animation}
+            className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth"
+          >
             {cardsData?.map(({ img, title }) => (
               <MediumCard key={img} img={img} title={title} />
             ))}
-          </div>
+          </motion.div>
         </section>
 
         <LargeCard
