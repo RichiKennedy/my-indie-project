@@ -18,7 +18,7 @@ const Hero = () => {
     <div className="  relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[800px] bg-fixed z-0 ">
       <Image
         className="  "
-        style={{ transform: `translateY(${offsetY * 0.7}px)` }}
+        style={{ transform: `translateY(${offsetY * 0.5}px)` }}
         src={Domi}
         alt="Hero image"
         layout="fill"
