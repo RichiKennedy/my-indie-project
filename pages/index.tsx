@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
@@ -67,7 +68,7 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <section ref={ref}>
-          <h2 className=" text-4xl font-semibold py-8">Explore Countries</h2>
+          <h2 className=" text-4xl font-semibold py-8">My Recomendations</h2>
           <motion.div
             animate={animation}
             className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth"

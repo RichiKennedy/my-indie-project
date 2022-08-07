@@ -1,10 +1,8 @@
 import { React, useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import HeroImg from "../assets/images/shh2.jpg";
-import Aeroplane from "../assets/images/aeroplane.jpg";
-import Coral from "../assets/images/coral.jpg";
-import Navbar from "./Navbar";
 import Domi from "../assets/images/domi-chung.jpg";
+import Shh from "../assets/images/shh2.jpg";
 
 const Hero = () => {
   const [offsetY, setOffsetY] = useState(0);
@@ -19,7 +17,7 @@ const Hero = () => {
       <Image
         className="  "
         style={{ transform: `translateY(${offsetY * 0.5}px)` }}
-        src={Domi}
+        src={Shh}
         alt="Hero image"
         layout="fill"
         objectFit="cover"
@@ -32,19 +30,22 @@ const Hero = () => {
         </h3>
 
         <p className=" hidden md:block text-base md:text-2xl text-white mb-10">
-          {" "}
           A carfully, pieced together insporational travel app from my own
           personal experiences{" "}
         </p>
         <p className=" text-sm sm:text-lg text-white ">
           Not sure where to look? Perfect.
         </p>
-        <button
-          className=" text-purple-500 bg-white px-10 py-4 shadow-lg 
-        rounded-full font-bold my-3 hover:shadow-2xl active:scale-90 transition duration-200"
-        >
-          I'm flexible
-        </button>
+
+        {/* button on Hero should link to Countries page */}
+        <Link href="/Countries">
+          <button
+            className=" text-purple-500 bg-white px-10 py-4 shadow-lg
+          rounded-full font-bold my-3 hover:shadow-2xl active:scale-90 transition duration-200"
+          >
+            I'm Flexible
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import {
   MenuIcon,
   UserCircleIcon,
 } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const Navbar = () => {
   const [color, setColor] = useState("rgba(0, 0, 0, 0.3)");
@@ -37,7 +38,9 @@ const Navbar = () => {
           objectFit="contain"
           objectPosition="left"
         /> */}
-        <h1 className=" text-5xl text-red-400"> Shh.. </h1>
+        <Link href="/">
+          <h1 className=" text-5xl text-red-400"> Shh.. </h1>
+        </Link>
       </div>
 
       {/* middle */}
@@ -58,10 +61,12 @@ const Navbar = () => {
         >
           Become a host
         </p>
+
         <GlobeAltIcon
           style={{ color: `${textColor}` }}
           className=" h-6 cursor-pointer"
         />
+
         <div className=" flex items-center border-2 rounded-full p-2 md:shadow-sm space-x-2">
           <MenuIcon
             style={{ color: `${textColor}` }}
