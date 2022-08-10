@@ -25,8 +25,7 @@ const Hero = () => {
       <div className=" absolute flex flex-col space-y-5 top-0 left-0 right-0 bottom-0 bg-black/20 justify-end md:justify-center items-start p-5  ">
         <h3 className=" text-lg sm:text-xl md:text-3xl text-white ">
           {" "}
-          Discover the local secrets on your next travel <br /> Before they
-          install an instagram swing!
+          Discover the local secrets on your next travel!
         </h3>
 
         <p className=" hidden md:block text-base md:text-2xl text-white mb-10">
@@ -38,7 +37,7 @@ const Hero = () => {
         </p>
 
         {/* button on Hero should link to Countries page */}
-        <Link href="/Countries">
+        <Link href="/Countries" passHref>
           <button
             className=" text-purple-500 bg-white px-10 py-4 shadow-lg
           rounded-full font-bold my-3 hover:shadow-2xl active:scale-90 transition duration-200"

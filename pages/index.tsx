@@ -24,7 +24,7 @@ export default function Home({ exploreData, cardsData }) {
     console.log("useEffect hook inView =", inView);
     if (inView) {
       animation.start({
-        x: 0,
+        scale: 1,
         transition: {
           type: "spring",
           duration: 0.8,
@@ -33,7 +33,7 @@ export default function Home({ exploreData, cardsData }) {
       });
     }
     if (!inView) {
-      animation.start({ x: "-100vw" });
+      animation.start({ scale: 0 });
     }
   }, [inView]);
 
@@ -43,8 +43,8 @@ export default function Home({ exploreData, cardsData }) {
         <title>Shh..</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Navbar />
+
       <Hero />
 
       <main className=" max-w-7xl mx-auto px-8 sm:px-16 z-10">
@@ -54,17 +54,6 @@ export default function Home({ exploreData, cardsData }) {
           <div>
             <NewSmallCard slides={SmallCardData} />
           </div>
-
-          {/* <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {exploreData?.map((item) => (
-              <SmallCard
-                key={item.img}
-                img={item.img}
-                location={item.location}
-                distance={item.distance}
-              />
-            ))}
-          </div> */}
         </section>
 
         <section ref={ref}>

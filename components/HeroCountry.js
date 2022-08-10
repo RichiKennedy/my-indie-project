@@ -18,8 +18,12 @@ const HeroCountry = () => {
         objectFit="cover "
         style={{ transform: `translateY(${offsetY * 0.7}px)` }}
       />
-      <div className=" absolute top-0 right-0 bottom-0 left-0 bg-black/60 flex justify-center items-center ">
-        <h2 className=" text-white text-center "> Get In!</h2>
+      <div className=" absolute top-0 right-0 bottom-0 left-0 bg-black/60 flex justify-center items-center pl-5 flex-col ">
+        <h2 className=" text-white text-8xl text-start  "> Get Inspired</h2>
+        <h4 className=" text-red-300 text-2xl">
+          {" "}
+          Select a country that tickles your fancy{" "}
+        </h4>
       </div>
     </div>
   );
