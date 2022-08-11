@@ -4,7 +4,7 @@ import { SmallCardData } from "./SmallCardData";
 
 const CountryImages = (bigSlide) => {
   return (
-    <div className="  gap-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
+    <div className="  gap-5 p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4  ">
       {SmallCardData.map((slideImage, key) => {
         return (
           <div key={key} className=" relative h-[300px] w-[100%]   ">
