@@ -49,7 +49,7 @@ export default function Home({ exploreData, cardsData }) {
 
       <main className=" max-w-7xl mx-auto px-8 sm:px-16 z-10">
         <section className="pt-6">
-          <h2 className=" text-4xl font-semibold pb-5">Explore Countries</h2>
+          <h2 className=" text-4xl font-semibold pb-5">Where To Next?</h2>
 
           <div>
             <NewSmallCard slides={SmallCardData} />
@@ -57,7 +57,7 @@ export default function Home({ exploreData, cardsData }) {
         </section>
 
         <section ref={ref}>
-          <h2 className=" text-4xl font-semibold py-8">My Recomendations</h2>
+          <h2 className=" text-4xl font-semibold py-8"> Discover</h2>
           <motion.div
             animate={animation}
             className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth"

@@ -59,7 +59,7 @@ const Navbar = () => {
           style={{ color: `${textColor}` }}
           className=" cursor-pointer hidden md:inline text-sm"
         >
-          Become a host
+          destinations
         </p>
 
         <GlobeAltIcon

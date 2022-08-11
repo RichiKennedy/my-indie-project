@@ -23,15 +23,19 @@ const Hero = () => {
         objectFit="cover"
       />
       <div className=" absolute flex flex-col space-y-5 top-0 left-0 right-0 bottom-0 bg-black/20 justify-end md:justify-center items-start p-5  ">
-        <h3 className=" text-lg sm:text-xl md:text-3xl text-white ">
+        <h3 className=" text-xg sm:text-2xl md:text-5xl text-white capitalize ">
           {" "}
-          Discover the local secrets on your next travel!
+          Get inspired!
         </h3>
 
-        <p className=" hidden md:block text-base md:text-2xl text-white mb-10">
-          A carfully, pieced together insporational travel app from my own
-          personal experiences{" "}
+        <p className=" hidden md:block text-base md:text-2xl text-white  w-[100vw]">
+          A carfully pieced together insporational travel app{" "}
+          <span className=" text-red-300">
+            {" "}
+            from my own personal experiences
+          </span>
         </p>
+
         <p className=" text-sm sm:text-lg text-white ">
           Not sure where to look? Perfect.
         </p>
