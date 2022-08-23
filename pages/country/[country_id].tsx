@@ -6,7 +6,6 @@ import { ObjectId } from "mongodb";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { Link } from "react-scroll/modules";
-import React from "react";
 
 const CountryDetails = ({ country }) => {
   const [offsetY, setOffsetY] = useState(0);
