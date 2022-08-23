@@ -27,7 +27,7 @@ const Loading = () => {
     };
   });
   return loading ? (
-    <div className=" flex items-center justify-center h-screen bg-gray-900">
+    <div className=" flex items-center justify-center h-screen  bg-gray-900">
       <div className=" relative w-24 h-24 animate-spin rounded-full bg-gradient-to-r from-red-300 via-red-400 to-red-500">
         <div className=" absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-20 w-20 bg-gray-900 rounded-full"></div>
       </div>
