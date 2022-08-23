@@ -13,8 +13,10 @@ import Footer from "../components/Footer";
 import { useRef, useEffect, useState, lazy, Suspense } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { GetStaticProps } from "next";
+import clientPromise from "../database/mongoDB";
 
-export default function Home({ exploreData, cardsData }) {
+export default function Home({ exploreData, cardsData, countries }) {
   const { ref, inView } = useInView({
     threshold: 0.2,
   });
@@ -36,7 +38,6 @@ export default function Home({ exploreData, cardsData }) {
       animation.start({ scale: 0 });
     }
   }, [inView]);
-
   return (
     <div>
       <Head>
@@ -48,11 +49,12 @@ export default function Home({ exploreData, cardsData }) {
       <Hero />
 
       <main className=" max-w-7xl mx-auto px-8 sm:px-16 z-10">
-        <section className="pt-6">
-          <h2 className=" text-4xl font-semibold pb-5">Where To Next?</h2>
-
-          <div>
-            <NewSmallCard slides={SmallCardData} />
+        <section className="pt-6 ">
+          <h2 className=" text-4xl font-semibold pb-5">Wow</h2>
+          <div className=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {countries?.map((country, key) => {
+              return <NewSmallCard country={country} key={country._id} />;
+            })}
           </div>
         </section>
 
@@ -60,10 +62,10 @@ export default function Home({ exploreData, cardsData }) {
           <h2 className=" text-4xl font-semibold py-8"> Discover</h2>
           <motion.div
             animate={animation}
-            className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth"
+            className=" flex space-x-3 overflow-scroll scrollbar-hide p-3 scroll-smooth "
           >
-            {cardsData?.map(({ img, title }) => (
-              <MediumCard key={img} img={img} title={title} />
+            {countries?.map((country, key) => (
+              <MediumCard country={country} key={key} />
             ))}
           </motion.div>
         </section>
@@ -80,19 +82,13 @@ export default function Home({ exploreData, cardsData }) {
   );
 }
 
-export async function getStaticProps() {
-  const exploreData = await fetch("https://links.papareact.com/pyp").then(
-    (res) => res.json()
-  );
-
-  const cardsData = await fetch("https://links.papareact.com/zp1").then((res) =>
-    res.json()
-  );
+export const getStaticProps: GetStaticProps = async () => {
+  const collection = (await clientPromise)
+    .db("Indie-proj")
+    .collection("countries");
+  const countries = await collection.find({}).sort({ order: -1 }).toArray();
 
   return {
-    props: {
-      exploreData,
-      cardsData,
-    },
+    props: { countries: JSON.parse(JSON.stringify(countries)) },
   };
-}
+};
