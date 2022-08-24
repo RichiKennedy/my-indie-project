@@ -14,7 +14,7 @@ const Loading = () => {
       url === router.asPath &&
       setTimeout(() => {
         setLoading(false);
-      }, 2000);
+      }, 3000);
 
     router.events.on("routeChangeStart", handleStart);
     router.events.on("routeChangeComplete", handleComplete);
